@@ -11,16 +11,16 @@ weworkapi_php 是为企业微信API接口开发的php版的库
 
 # Director 
 
-├── api // API 接口
-│   ├── datastructure // API接口需要使用到的一些数据结构
-│   ├── examples // API接口的测试用例
-│   ├── README.md
-│   └── src // API接口的关键逻辑
-├── callback // 消息回调的一些方法
-├── config.php 
-├── README.md
-└── utils // 一些基础方法
+├── api // API 接口  
+│   ├── datastructure // API接口需要使用到的一些数据结构  
+│   ├── examples // API接口的测试用例  
+│   ├── README.md  
+│   └── src // API接口的关键逻辑  
+├── callback // 消息回调的一些方法  
+├── config.php   
+├── README.md  
+└── utils // 一些基础方法  
 
 # Contact us
-abelzhu@tencent.com
-xiqunpan@tencent.com
+abelzhu@tencent.com  
+xiqunpan@tencent.com  
