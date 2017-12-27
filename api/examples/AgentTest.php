@@ -12,22 +12,24 @@
 include_once("../src/CorpAPI.class.php");
 include_once("../src/ServiceCorpAPI.class.php");
 include_once("../src/ServiceProviderAPI.class.php");
-// 
-$agentId = 1000029;
-$api = new CorpAPI("wwfedd7e5292d63a35", "EL39AdrLeo0wkTR2Taiczl9KDw-V4YFumfV4zmGtKxY");
+
+$config = require('./config.php');
+
+//
+$api = new CorpAPI($config['CORP_ID'], $config['APP_SECRET']);
 
 // ------------------------- 应用管理 --------------------------------------
 try {
     //
     $agent = new Agent();
     {
-        $agent->agentid = $agentId;
+        $agent->agentid = $config['APP_ID'];
         $agent->description = "I'm description";
     }
     $api->AgentSet($agent);
 
     //
-    $agent = $api->AgentGet($agentId);
+    $agent = $api->AgentGet($config['APP_ID']);
     var_dump($agent);
 
     //

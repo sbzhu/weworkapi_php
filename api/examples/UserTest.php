@@ -13,8 +13,12 @@ include_once("../src/CorpAPI.class.php");
 include_once("../src/ServiceCorpAPI.class.php");
 include_once("../src/ServiceProviderAPI.class.php");
 
+
+$config = require('./config.php');
 // 需启用 "管理工具" -> "通讯录同步", 并使用该处的secret, 才能通过API管理通讯录
-$api = new CorpAPI("wwfedd7e5292d63a35", "CyeISAmDEps8gzRDQtLlvAr4B9PIjH1uQpbNmHH0Gj8");
+//
+$api = new CorpAPI($config['CORP_ID'], $config['CONTACT_SYNC_SECRET']);
+
 
 try { 
     //
@@ -24,7 +28,7 @@ try {
         $user->name = "name";
         $user->mobile = "131488888888";
         $user->email = "sbzhu@ipp.cas.cn";
-        $user->department = array(1, 2); 
+        $user->department = array(1); 
 
         $ExtattrList = new ExtattrList();
         $ExtattrList->attrs = array(new ExtattrItem("s_a_2", "aaa"), new ExtattrItem("s_a_3", "bbb"));
@@ -55,7 +59,7 @@ try {
 
     //
     $userId = null;
-    $api->openId2UserId("oc7Egw7A-GE-LWLLhK_ObR-5p_Qg", $userId);
+    $api->openId2UserId($openId, $userId);
     echo "userid: $userId\n";
 
     //

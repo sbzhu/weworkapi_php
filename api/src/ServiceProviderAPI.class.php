@@ -10,11 +10,11 @@
  *
  */
 
-include_once("../../utils/Utils.class.php");
-include_once("../../utils/HttpUtils.class.php");
-include_once("../../utils/error.inc.php");
+include_once(__DIR__."/../../utils/Utils.class.php");
+include_once(__DIR__."/../../utils/HttpUtils.class.php");
+include_once(__DIR__."/../../utils/error.inc.php");
 
-include_once("../datastructure/ServiceProvider.class.php");
+include_once(__DIR__."/../datastructure/ServiceProvider.class.php");
 
 class ServiceProviderAPI extends API
 {

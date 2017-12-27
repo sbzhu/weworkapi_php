@@ -10,13 +10,13 @@
  *
  */
 
-include_once("../../utils/Utils.class.php");
-include_once("../../utils/HttpUtils.class.php");
-include_once("../../utils/error.inc.php");
+include_once(__DIR__."/../../utils/Utils.class.php");
+include_once(__DIR__."/../../utils/HttpUtils.class.php");
+include_once(__DIR__."/../../utils/error.inc.php");
 
-include_once("../datastructure/ServiceCorp.class.php");
+include_once(__DIR__."/../datastructure/ServiceCorp.class.php");
 
-include_once("API.class.php");
+include_once(__DIR__."/API.class.php");
 
 class ServiceCorpAPI extends CorpAPI 
 {

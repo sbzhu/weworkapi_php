@@ -11,25 +11,25 @@
  */
 
 
-include_once("../../utils/Utils.class.php");
-include_once("../../utils/HttpUtils.class.php");
-include_once("../../utils/error.inc.php");
+include_once(__DIR__."./../../utils/Utils.class.php");
+include_once(__DIR__."/../../utils/HttpUtils.class.php");
+include_once(__DIR__."/../../utils/error.inc.php");
 
-include_once("API.class.php");
+include_once(__DIR__."/API.class.php");
 
-include_once("../datastructure/User.class.php");
-include_once("../datastructure/Department.class.php");
-include_once("../datastructure/Tag.class.php");
-include_once("../datastructure/Batch.class.php");
-include_once("../datastructure/Agent.class.php");
-include_once("../datastructure/Menu.class.php");
-include_once("../datastructure/Message.class.php");
-include_once("../datastructure/Oauth.class.php");
-include_once("../datastructure/CheckinOption.class.php");
-include_once("../datastructure/CheckinData.class.php");
-include_once("../datastructure/ApprovalData.class.php");
-include_once("../datastructure/Pay.class.php");
-include_once("../datastructure/Invoice.class.php");
+include_once(__DIR__."/../datastructure/User.class.php");
+include_once(__DIR__."/../datastructure/Department.class.php");
+include_once(__DIR__."/../datastructure/Tag.class.php");
+include_once(__DIR__."/../datastructure/Batch.class.php");
+include_once(__DIR__."/../datastructure/Agent.class.php");
+include_once(__DIR__."/../datastructure/Menu.class.php");
+include_once(__DIR__."/../datastructure/Message.class.php");
+include_once(__DIR__."/../datastructure/Oauth.class.php");
+include_once(__DIR__."/../datastructure/CheckinOption.class.php");
+include_once(__DIR__."/../datastructure/CheckinData.class.php");
+include_once(__DIR__."/../datastructure/ApprovalData.class.php");
+include_once(__DIR__."/../datastructure/Pay.class.php");
+include_once(__DIR__."/../datastructure/Invoice.class.php");
 
 class CorpAPI extends API
 {
@@ -165,7 +165,7 @@ class CorpAPI extends API
     public function UserSimpleList($department_id, $fetchChild)
     {
         Utils::checkIsUInt($department_id, "department_id"); 
-        self::_HttpCall(self::USER_SIMPLE_LIST, 'GET', array('department_id'=>$department_id, 'fetch_child'=>$fetch_child)); 
+        self::_HttpCall(self::USER_SIMPLE_LIST, 'GET', array('department_id'=>$department_id, 'fetch_child'=>$fetchChild)); 
         return User::Array2UserList($this->rspJson);
     }
 
@@ -376,7 +376,7 @@ class CorpAPI extends API
      * @note 1: userIdList/partyIdList 不能同时为空
      * @note 2: 如果存在不合法的 userid/partyid, 不会throw Exception，但是会填充invalidUserIdList/invalidPartyIdList
      */
-    public function TagAddUser($tagid, $userIdList, $partyIdList, &$invalidUserIdList, &$invalidPartyIdList)
+    public function TagAddUser($tagid, $userIdList=null, $partyIdList=null, &$invalidUserIdList, &$invalidPartyIdList)
     {
         Tag::CheckTagAddUserArgs($tagid, $userIdList, $partyIdList); 
         $args = Tag::ToTagAddUserArray($tagid, $userIdList, $partyIdList);

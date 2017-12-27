@@ -12,24 +12,18 @@ include_once("../src/CorpAPI.class.php");
 include_once("../src/ServiceCorpAPI.class.php");
 include_once("../src/ServiceProviderAPI.class.php");
 // 
-$agentId = 1000029;
-$api = new CorpAPI("wwfedd7e5292d63a35", "EL39AdrLeo0wkTR2Taiczl9KDw-V4YFumfV4zmGtKxY");
+$config = require('./config.php');
+// 
+$api = new CorpAPI($config['CORP_ID'], $config['CHECKIN_APP_SECRET']);
  
-try {
-    $api = new CorpAPI("wwfedd7e5292d63a35", "soENuQULV0WCXNzTfnVilqyUEeSGzaOiNGmFbZK2AQs");
-
+try { 
     //
-    $checkinOption = $api->CheckinOptionGet(1513760113, array("abelzhu"));
+    $checkinOption = $api->CheckinOptionGet(1513760113, array("ZhuShengBen"));
     var_dump($checkinOption);
 
     //
-    $checkinDataList = $api->CheckinDataGet(1, 1513649733, 1513770113, array("abelzhu"));
+    $checkinDataList = $api->CheckinDataGet(1, 1513649733, 1513770113, array("ZhuShengBen"));
     var_dump($checkinDataList);
-
-    $api = new CorpAPI("wwfedd7e5292d63a35", "nyJUOE9k9Ha9IH2ZcdapIYQUwULYXPTAV-YAU-taFTo");
-    //
-    $ApprovalDataList = $api->ApprovalDataGet(1513649733, 1513770113);
-    var_dump($ApprovalDataList);
 } catch (Exception $e) { 
     echo $e->getMessage() . "\n";
 }

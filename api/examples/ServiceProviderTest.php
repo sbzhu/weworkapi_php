@@ -15,8 +15,8 @@ include_once("../src/ServiceProviderAPI.class.php");
  
 try {
     $ServiceProviderAPI = new ServiceProviderAPI(
-        "wxd1165b872e863a03", 
-        "YHNbNRku4fwLPgs1UTk-girOIG7AO9N-fqtvztiIBU3pH0llME_6-g1UdBO6cwbi"
+        "CORPID", 
+        "PROVIDER_SECRET"
     );
     //
 

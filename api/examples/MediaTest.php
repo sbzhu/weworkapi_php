@@ -15,10 +15,12 @@ include_once("../src/ServiceProviderAPI.class.php");
  *
  */
  
-$api = new CorpAPI("wwfedd7e5292d63a35", "EL39AdrLeo0wkTR2Taiczl9KDw-V4YFumfV4zmGtKxY");
+$config = require('./config.php');
+
+$api = new CorpAPI($config['CORP_ID'], $config['APP_SECRET']);
 try {
     //
-    $mediaId = $api->MediaUpload("test.php", "file");
+    $mediaId = $api->MediaUpload("TestConfig.php", "file");
     echo $mediaId."\n";
 
     //

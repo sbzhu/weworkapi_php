@@ -1,11 +1,11 @@
 <?php /*
  * Copyright (C) 2017 All rights reserved.
  *   
- * @File JsApiTest.php
+ * @File ApprovalTest.php
  * @Brief 
  * @Author abelzhu, abelzhu@tencent.com
  * @Version 1.0
- * @Date 2017-12-26
+ * @Date 2017-12-27
  *
  */
  
@@ -15,16 +15,11 @@ include_once("../src/ServiceProviderAPI.class.php");
 // 
 $config = require('./config.php');
 // 
-$api = new CorpAPI($config['CORP_ID'], $config['APP_SECRET']);
+$api = new CorpAPI($config['CORP_ID'], $config['APPROVAL_APP_SECRET']);
  
 try {
-    //
-    $ticket = $api->TicketGet();
-    echo $ticket . "\n";
-
-    //
-    $ticket = $api->JsApiTicketGet();
-    echo $ticket . "\n";
+    $ApprovalDataList = $api->ApprovalDataGet(1513649733, 1513770113);
+    var_dump($ApprovalDataList);
 } catch (Exception $e) { 
     echo $e->getMessage() . "\n";
 }

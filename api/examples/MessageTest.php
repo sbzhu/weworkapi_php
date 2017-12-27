@@ -13,8 +13,11 @@ include_once("../src/CorpAPI.class.php");
 include_once("../src/ServiceCorpAPI.class.php");
 include_once("../src/ServiceProviderAPI.class.php");
 // 
-$agentId = 1000029;
-$api = new CorpAPI("wwfedd7e5292d63a35", "EL39AdrLeo0wkTR2Taiczl9KDw-V4YFumfV4zmGtKxY");
+
+$config = require('./config.php');
+// 
+$agentId = $config['APP_ID'];
+$api = new CorpAPI($config['CORP_ID'], $config['APP_SECRET']);
 
 try { 
     //

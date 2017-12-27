@@ -13,28 +13,31 @@ include_once("../src/CorpAPI.class.php");
 include_once("../src/ServiceCorpAPI.class.php");
 include_once("../src/ServiceProviderAPI.class.php");
 
+$config = require('./config.php');
 // 需启用 "管理工具" -> "通讯录同步", 并使用该处的secret, 才能通过API管理通讯录
-$api = new CorpAPI("wwfedd7e5292d63a35", "CyeISAmDEps8gzRDQtLlvAr4B9PIjH1uQpbNmHH0Gj8");
+//
+$api = new CorpAPI($config['CORP_ID'], $config['CONTACT_SYNC_SECRET']);
+
 
 try { 
     //
     $tag = new Tag();
     { 
-        $tag->tagname = "tag_701";
+        $tag->tagname = "tag_1";
     }
-    $tagId = $api->TagCreate($tag);
-    echo $tagId . "\n";
+    $tagid = $api->TagCreate($tag);
+    echo $tagid . "\n";
 
     //
-    $tag->tagid = $tagId;
-    $tag->tagname = "tag_801";
+    $tag->tagid = $tagid;
+    $tag->tagname = "tag_2";
     $api->TagUpdate($tag);
 
     //
     $invalidUserIdList = null;
     $invalidPartyIdList = null;
     $api->TagAddUser(
-        $tagId, 
+        $tagid, 
         array("ZhuShengBen", "abelzhu", "aaaa", "bbbb"), 
         array(1, 2, 2222, 3333), 
         $invalidUserIdList, 
@@ -43,10 +46,10 @@ try {
     var_dump($invalidPartyIdList);
 
     //
-    $api->TagDeleteUser($tagId, null, array(2, 222222), $invalidUserIdList, $invalidPartyIdList);
+    $api->TagDeleteUser($tagid, null, array(1, 2, 222222), $invalidUserIdList, $invalidPartyIdList);
 
     //
-    $tag = $api->TagGetUser($tagId);
+    $tag = $api->TagGetUser($tagid);
     var_dump($tag);
 
     //
@@ -54,10 +57,10 @@ try {
     var_dump($tagList);
 
     //
-    $api->TagDelete($tagId);
+    $api->TagDelete($tagid);
 
 } catch (Exception $e) { 
     echo $e->getMessage() . "\n";
-    $api->TagDelete($tagId);
+    $api->TagDelete($tagid);
 }
 

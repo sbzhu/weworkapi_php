@@ -13,8 +13,11 @@ include_once("../src/CorpAPI.class.php");
 include_once("../src/ServiceCorpAPI.class.php");
 include_once("../src/ServiceProviderAPI.class.php");
 
+$config = require('./config.php');
+
 // 需启用 "管理工具" -> "通讯录同步", 并使用该处的secret, 才能通过API管理通讯录
-$api = new CorpAPI("wwfedd7e5292d63a35", "CyeISAmDEps8gzRDQtLlvAr4B9PIjH1uQpbNmHH0Gj8");
+//
+$api = new CorpAPI($config['CORP_ID'], $config['CONTACT_SYNC_SECRET']);
 
 try {
     //

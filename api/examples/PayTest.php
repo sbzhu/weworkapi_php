@@ -12,7 +12,10 @@ include_once("../src/CorpAPI.class.php");
 include_once("../src/ServiceCorpAPI.class.php");
 include_once("../src/ServiceProviderAPI.class.php");
 // 
-$api = new CorpAPI("wwfedd7e5292d63a35", "soENuQULV0WCXNzTfnVilqyUEeSGzaOiNGmFbZK2AQs");
+$config = require('./config.php');
+// 
+$agentId = $config['APP_ID'];
+$api = new CorpAPI($config['CORP_ID'], $config['APP_SECRET']);
  
 try { 
     $SendWorkWxRedpackReq = new SendWorkWxRedpackReq();

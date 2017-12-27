@@ -13,15 +13,15 @@ include_once("../src/ServiceCorpAPI.class.php");
 include_once("../src/ServiceProviderAPI.class.php");
  
 try { 
-    $authCorpId = "wwfedd7e5292d63a35";
+    $authCorpId = "AUTH_CORPID";
     $authAgentId = 1000040;
 
     // 下面是第三方应用接口的使用
     //
     $ServiceCorpAPI = new ServiceCorpAPI(
-        "tj369a681625246bff", 
-        "LJeDhZPqt3MrNAA1Zy33p4MZmGwJ8h2ienuR542ygTSBgABCrTnUSG3z_1tEtFul",
-        "4arFqG3NUavZBF6GdwkbkvCKFrTPpdg7ookDQemRv4-B9HDSdRNY_S4aRoYB2tCo" // suite_ticket
+        "SUITE_ID", 
+        "SUITE_SECRET",
+        "SUITE_TICKET" 
     );
 
     $pre_auth_code = $ServiceCorpAPI->GetPreAuthCode();
@@ -47,7 +47,7 @@ try {
 
     // permanentCode 的获取方法
     //
-    $temp_auth_code = "vwQRU8AHhC8m6JMEU1U9LqDckuTLp_-BoOzEBQrz210AugwbMoRh039aIWB062pemU1VChLUfDfaf_k92vuwfJj_ZYzdP8Df8GUR5RqtYLY";
+    $temp_auth_code = "TEMP_AUTH_CODE";
     $GetPermanentCodeRsp = $ServiceCorpAPI->GetPermanentCode($temp_auth_code);
     var_dump($GetPermanentCodeRsp);
 
@@ -73,14 +73,14 @@ try {
 }
 
 try { // 第三方服务商使用永久授权码调用企业接口 
-    $authCorpId = "wwfedd7e5292d63a35";
-    $permanentCode = "pcf4D9vCD9tYu85TlHtiYxdEmYP0G6XRgTSco59YWio"; 
+    $authCorpId = "AUTH_CORPID";
+    $permanentCode = "PERMANENT_CODE"; 
     $authAgentId = 1000040;
 
     $ServiceCorpAPI = new ServiceCorpAPI(
-        "tj369a681625246bff", 
-        "LJeDhZPqt3MrNAA1Zy33p4MZmGwJ8h2ienuR542ygTSBgABCrTnUSG3z_1tEtFul",
-        "4arFqG3NUavZBF6Gdwkbkv_dqSK_CU_X5E_GF31cJGArgAGJLPQDQnAPaHKiGO4o", // suite_ticket
+        "SUITE_ID", 
+        "SUITE_SECRET",
+        "SUITE_TICKET", // suite_ticket
         $authCorpId,
         $permanentCode
     );
