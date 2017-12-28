@@ -32,8 +32,13 @@ try {
 
         $message->messageContent = new NewsMessageContent(
             array(
-                new NewsArticle("title_1", "description", "url", "picurl", "btntxt"),
-                new NewsArticle("title_2", "description", "url", "picurl", "btntxt")
+                new NewsArticle(
+                    $title = "Got you !", 
+                    $description = "Who's this cute guy testing me ?", 
+                    $url = "https://work.weixin.qq.com/wework_admin/ww_mt/agenda", 
+                    $picurl = "https://p.qpic.cn/pic_wework/167386225/f9ffc8f0a34f301580daaf05f225723ff571679f07e69f91/0", 
+                    $btntxt = "btntxt"
+                ),
             )
         );
     }
