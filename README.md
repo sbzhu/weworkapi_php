@@ -1,5 +1,5 @@
 # About
-weworkapi_php 是为企业微信API接口开发的php版的库  
+weworkapi_php 是为了简化开发者对企业微信API接口的使用门槛而设计的，API调用库系列之php版本  
 包括 企业API接口、消息回调处理方法、第三方开放接口等  
 
 # Requirement
