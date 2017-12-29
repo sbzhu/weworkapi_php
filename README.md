@@ -20,6 +20,8 @@ weworkapi_php 是为了简化开发者对企业微信API接口的使用而设计
 # Usage
 将本项目下载到你的目录，既可直接引用相关文件  
 ```
+include_once("api/src/CorpAPI.class.php");
+
 // 实例化 API 类
 $api = new CorpAPI($corpId='ww55ca070cb9b7eb22', $secret='ktmzrVIlUH0UW63zi7-JyzsgTL9NfwUhHde6or6zwQY');
 
