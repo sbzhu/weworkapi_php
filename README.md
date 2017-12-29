@@ -25,22 +25,27 @@ include_once("api/src/CorpAPI.class.php");
 // 实例化 API 类
 $api = new CorpAPI($corpId='ww55ca070cb9b7eb22', $secret='ktmzrVIlUH0UW63zi7-JyzsgTL9NfwUhHde6or6zwQY');
 
-// 创建 User
-$user = new User();
-{
+try { 
+    // 创建 User
+    $user = new User();
+    {
         $user->userid = "userid";
         $user->name = "name";
         $user->mobile = "131488888888";
         $user->email = "sbzhu@ipp.cas.cn";
         $user->department = array(1); 
-} 
-$api->UserCreate($user);
+    } 
+    $api->UserCreate($user);
 
-// 获取User
-$user = $api->UserGet("userid");
+    // 获取User
+    $user = $api->UserGet("userid");
 
-// 删除User
-$api->UserDelete("userid");
+    // 删除User
+    $api->UserDelete("userid"); 
+} catch {
+    echo $e->getMessage() . "\n";
+    $api->UserDelete("userid");
+}
 ```
 详细使用方法参考每个模块下的测试用例
 
