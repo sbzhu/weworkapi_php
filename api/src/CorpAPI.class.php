@@ -502,6 +502,37 @@ class CorpAPI extends API
     }
 
     //
+    // ------------------------- 邀请成员 --------------------------------------
+    // 
+    /**
+        * @brief BatchInvite : 邀请成员
+        *
+        * @link https://work.weixin.qq.com/api/doc#12543
+        *
+        * @param $userIdList : input string array
+        * @param $partyIdList : input uint array
+        * @param $tagIdList : input uint array
+        *
+        * @param $invalidUserIdList : output string array
+        * @param $invalidPartyIdList : output uint array
+        * @param $invalidTagIdList : output uint array
+     */
+    public function BatchInvite(
+        $userIdList=null, $partyIdList=null, $tagIdList=null,
+        &$invalidUserIdList, &$invalidPartyIdList, &$invalidTagIdList)
+    {
+        if (is_null($userIdList) && is_null($partyIdList) && is_null($tagIdList)) {
+            throw QyApiError("input can not be all null");
+        }
+        $args = array('user'=>$userIdList, 'party'=>$partyIdList, 'tag'=>$tagIdList);
+        self::_HttpCall(self::BATCH_INVITE, 'POST', $args); 
+
+        $invalidUserIdList = Utils::arrayGet($this->rspJson, 'invaliduser');
+        $invalidPartyIdList = Utils::arrayGet($this->rspJson, 'invalidparty');
+        $invalidTagIdList = Utils::arrayGet($this->rspJson, 'invalidtag');
+    } 
+
+    //
     // ------------------------- 应用管理 --------------------------------------
     //
     /**
