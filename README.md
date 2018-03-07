@@ -50,6 +50,22 @@ try {
 ```
 详细使用方法参考每个模块下的测试用例
 
+# 关于token的缓存
+token是需要缓存的，不能每次调用都去获取token（否者会中频率限制）
+在本库的设计里，token是以类里的一个变量缓存的
+比如api/src/CorpAPI.class.php 里的$accessToken变量
+在类的生命周期里，这个accessToken都是存在的， 当且仅当发现token过期，CorpAPI类会自动刷新token
+刷新机制在 api/src/API.class.php
+所以，使用时，只需要全局实例化一个CorpAPI类，不要析构它，就可一直用它调函数，不用关心 token
+```
+$api = new CorpAPI(corpid, corpsecret);
+$api->dosomething()
+$api->dosomething()
+$api->dosomething()
+....
+```
+
+
 # Contact us
 abelzhu@tencent.com  
 xiqunpan@tencent.com  
