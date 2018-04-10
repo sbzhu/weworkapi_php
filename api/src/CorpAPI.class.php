@@ -794,6 +794,24 @@ class CorpAPI extends API
         self::_HttpCall(self::GET_JSAPI_TICKET, 'GET', null); 
         return $this->rspJson["ticket"];
     }
+	
+    /**
+     * @brief JsApiSignatureGet : 计算jsapi的签名
+     *
+     * @link https://work.weixin.qq.com/api/doc#10029/%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95 
+         *
+     * @param $jsapiTicket : string
+     * @param $nonceStr : string
+     * @param $timestamp : string
+     * @param $url : string
+     *
+     * @return : string ticket
+     */
+    public function JsApiSignatureGet($jsapiTicket, $nonceStr, $timestamp, $url)
+    {
+    	$string = "jsapi_ticket=$jsapiTicket&noncestr=$nonceStr&timestamp=$timestamp&url=$url";
+        return sha1($string);
+    }
 
     //
     // ---------------------- OA数据接口 --------------------------------------
