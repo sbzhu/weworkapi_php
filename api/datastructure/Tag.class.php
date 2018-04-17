@@ -1,4 +1,3 @@
-
 <?php
 
 include_once(__DIR__."/../../utils/Utils.class.php");
