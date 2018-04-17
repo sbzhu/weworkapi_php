@@ -959,7 +959,7 @@ class CorpAPI extends API
      */
     static public function PayWwSptrans2Pocket(PayWwSptrans2PocketReq $PayWwSptrans2PocketReq)
     {
-        $url = "https://api.mch.weixin.qq.com/mmpaymkttransfers/queryworkwxredpack"; 
+        $url = "https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/paywwsptrans2pocket"; 
         $args = Utils::Object2Array($PayWwSptrans2PocketReq);
         $PayWwSptrans2PocketRsp = self::_HttpPostXml($url, $args); 
         self::_CheckXmlRetCode($PayWwSptrans2PocketRsp);
