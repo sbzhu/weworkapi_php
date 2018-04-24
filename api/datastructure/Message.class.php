@@ -177,7 +177,7 @@ class FileMessageContent
     public $msgtype = "file"; 
 	public $media_id = null; // string
 
-	public function __construct($media_id=null, $title=null, $description=null)
+	public function __construct($media_id=null)
 	{
 		$this->media_id = $media_id;
 	}
