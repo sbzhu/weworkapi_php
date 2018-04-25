@@ -497,7 +497,7 @@ class CorpAPI extends API
      */
     public function BatchJobGetResult($jobId)
     {
-        self::_HttpCall(self::BATCH_JOB_GET_RESULT, 'GET', array('jobid'=>$jobid)); 
+        self::_HttpCall(self::BATCH_JOB_GET_RESULT, 'GET', array('jobid'=>$jobId)); 
         return Batch::Array2BatchJobResult($this->rspJson);
     }
 
