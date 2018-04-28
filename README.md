@@ -51,7 +51,7 @@ try {
 详细使用方法参考每个模块下的测试用例
 
 # 关于token的缓存
-token是需要缓存的，不能每次调用都去获取token（否者会中频率限制）  
+token是需要缓存的，不能每次调用都去获取token，[否者会中频率限制](https://work.weixin.qq.com/api/doc#10013/%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E7%BC%93%E5%AD%98%E5%92%8C%E5%88%B7%E6%96%B0access_token)  
 在本库的设计里，token是以类里的一个变量缓存的  
 比如api/src/CorpAPI.class.php 里的$accessToken变量  
 在类的生命周期里，这个accessToken都是存在的， 当且仅当发现token过期，CorpAPI类会自动刷新token   
