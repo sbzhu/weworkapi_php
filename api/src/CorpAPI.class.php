@@ -423,7 +423,7 @@ class CorpAPI extends API
      */
     public function TagGetList()
     {
-        self::_HttpCall(self::TAG_GET_LIST, 'GET', null); 
+        self::_HttpCall(self::TAG_GET_LIST, 'GET', array()); 
         return Tag::Array2TagList($this->rspJson);
     }
 
@@ -573,7 +573,7 @@ class CorpAPI extends API
      */
     public function AgentGetList()
     {
-        self::_HttpCall(self::AGENT_GET_LIST, 'GET', null); 
+        self::_HttpCall(self::AGENT_GET_LIST, 'GET', array()); 
         return Agent::Array2AgentList($this->rspJson);
     }
 
@@ -791,7 +791,7 @@ class CorpAPI extends API
      */
     public function JsApiTicketGet()
     {
-        self::_HttpCall(self::GET_JSAPI_TICKET, 'GET', null); 
+        self::_HttpCall(self::GET_JSAPI_TICKET, 'GET', array()); 
         return $this->rspJson["ticket"];
     }
 	
