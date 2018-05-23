@@ -376,7 +376,7 @@ class CorpAPI extends API
      * @note 1: userIdList/partyIdList 不能同时为空
      * @note 2: 如果存在不合法的 userid/partyid, 不会throw Exception，但是会填充invalidUserIdList/invalidPartyIdList
      */
-    public function TagAddUser($tagid, $userIdList=null, $partyIdList=null, &$invalidUserIdList, &$invalidPartyIdList)
+    public function TagAddUser($tagid, $userIdList=array(), $partyIdList=array(), &$invalidUserIdList, &$invalidPartyIdList)
     {
         Tag::CheckTagAddUserArgs($tagid, $userIdList, $partyIdList); 
         $args = Tag::ToTagAddUserArray($tagid, $userIdList, $partyIdList);
@@ -684,7 +684,7 @@ class CorpAPI extends API
         }
 
         // 兼容php5.3-5.6 curl模块的上传操作
-		$args = null;
+	$args = array();
         if (class_exists('\CURLFile')) {
             $args = array('media' => new \CURLFile(realpath($filePath), 'application/octet-stream', basename($filePath)));
         } else {
@@ -747,7 +747,7 @@ class CorpAPI extends API
         }
 
         // 兼容php5.3-5.6 curl模块的上传操作
-                $args = null;
+        $args = array();
         if (class_exists('\CURLFile')) {
             $args = array('media' => new \CURLFile(realpath($filePath), 'application/octet-stream', basename($filePath)));
         } else {
