@@ -686,7 +686,7 @@ class CorpAPI extends API
         // 兼容php5.3-5.6 curl模块的上传操作
 		$args = null;
         if (class_exists('\CURLFile')) {
-            $args = array('media' => new \CURLFile(realpath($filePath)));
+            $args = array('media' => new \CURLFile(realpath($filePath), 'application/octet-stream', basename($filePath)));
         } else {
             $args = array('media' => '@' . realpath($filePath));
         }
@@ -728,6 +728,45 @@ class CorpAPI extends API
         self::_HttpCall(self::MEDIA_GET, 'GET', array('media_id'=>$media_id));
         return $this->rspRawStr;
     }
+	
+    /**
+     * @brief MediaGet : 上传永久图片
+     *
+     * @link https://work.weixin.qq.com/api/doc#13219
+     *
+     * @param $filePath : string, 图片文件路径
+     * @param $md5 : string, 图片文件的md5.可以不填
+     *
+     * @return : string。上传图片后，得到的图片永久URL。注意仅能用于图文消息（mpnews）正文中的图片展示
+     */
+    public function UploadImage($filePath, $md5=null)
+    {
+        Utils::checkNotEmptyStr($filePath, "filePath");
+        if ( ! file_exists($filePath)) { 
+            throw new QyApiError("file not exists");
+        }
+
+        // 兼容php5.3-5.6 curl模块的上传操作
+                $args = null;
+        if (class_exists('\CURLFile')) {
+            $args = array('media' => new \CURLFile(realpath($filePath), 'application/octet-stream', basename($filePath)));
+        } else {
+            $args = array('media' => '@' . $filePath);//realpath($filePath));
+        }
+
+        var_dump($args);
+
+        $url = HttpUtils::MakeUrl("/cgi-bin/media/uploadimg?access_token=ACCESS_TOKEN");
+        if ($md5 != null) { 
+            $url = $url . "&md5={$md5}";
+        }
+
+        $this->_HttpPostParseToJson($url, $args, true, true/*isPostFile*/);
+        $this->_CheckErrCode();
+
+        return $this->rspJson["url"];
+    }
+
     //
     // --------------------------- 身份验证 -----------------------------------
     //
