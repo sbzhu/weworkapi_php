@@ -142,9 +142,8 @@ abstract class API
 
             if ( ! Utils::notEmptyStr($this->rspRawStr)) throw new QyApiError("empty response"); 
             //
+            $this->rspJson = json_decode($this->rspRawStr, true/*to array*/);
             if (strpos($this->rspRawStr, "errcode") !== false) {
-                $this->rspJson = json_decode($this->rspRawStr, true/*to array*/);
-
                 $errCode = Utils::arrayGet($this->rspJson, "errcode");
                 if ($errCode == 40014 || $errCode == 42001 || $errCode == 42007 || $errCode == 42009) { // token expired
                     if ("NO_TOKEN" != $tokenType && true == $refreshTokenWhenExpired) {
