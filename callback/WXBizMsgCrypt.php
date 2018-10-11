@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 对公众平台发送给公众账号的消息加解密示例代码.
+ * 企业微信回调消息加解密示例代码.
  *
  * @copyright Copyright (c) 1998-2014 Tencent Inc.
  */
@@ -12,27 +12,23 @@ include_once "xmlparse.php";
 include_once "pkcs7Encoder.php";
 include_once "errorCode.php";
 
-/**
- * 1.第三方回复加密消息给公众平台；
- * 2.第三方收到公众平台发送的消息，验证消息的安全性，并对消息进行解密。
- */
 class WXBizMsgCrypt
 {
 	private $m_sToken;
 	private $m_sEncodingAesKey;
-	private $m_sCorpid;
+	private $m_sReceiveId;
 
 	/**
 	 * 构造函数
-	 * @param $token string 公众平台上，开发者设置的token
-	 * @param $encodingAesKey string 公众平台上，开发者设置的EncodingAESKey
-	 * @param $Corpid string 公众平台的Corpid
+	 * @param $token string 开发者设置的token
+	 * @param $encodingAesKey string 开发者设置的EncodingAESKey
+	 * @param $receiveId string, 不同应用场景传不同的id
 	 */
-	public function __construct($token, $encodingAesKey, $Corpid)
+	public function __construct($token, $encodingAesKey, $receiveId)
 	{
 		$this->m_sToken = $token;
 		$this->m_sEncodingAesKey = $encodingAesKey;
-		$this->m_sCorpid = $Corpid;
+		$this->m_sReceiveId = $receiveId;
 	}
 	
     /*
@@ -65,7 +61,7 @@ class WXBizMsgCrypt
 			return ErrorCode::$ValidateSignatureError;
 		}
 
-		$result = $pc->decrypt($sEchoStr, $this->m_sCorpid);
+		$result = $pc->decrypt($sEchoStr, $this->m_sReceiveId);
 		if ($result[0] != 0) {
 			return $result[0];
 		}
@@ -94,7 +90,7 @@ class WXBizMsgCrypt
 		$pc = new Prpcrypt($this->m_sEncodingAesKey);
 
 		//加密
-		$array = $pc->encrypt($sReplyMsg, $this->m_sCorpid);
+		$array = $pc->encrypt($sReplyMsg, $this->m_sReceiveId);
 		$ret = $array[0];
 		if ($ret != 0) {
 			return $ret;
@@ -159,7 +155,6 @@ class WXBizMsgCrypt
 		}
 
 		$encrypt = $array[1];
-		$touser_name = $array[2];
 
 		//验证安全签名
 		$sha1 = new SHA1;
@@ -175,7 +170,7 @@ class WXBizMsgCrypt
 			return ErrorCode::$ValidateSignatureError;
 		}
 
-		$result = $pc->decrypt($encrypt, $this->m_sCorpid);
+		$result = $pc->decrypt($encrypt, $this->m_sReceiveId);
 		if ($result[0] != 0) {
 			return $result[0];
 		}

@@ -76,14 +76,14 @@ class Prpcrypt
      * 加密
      *
      * @param $text
-     * @param $corpid
+     * @param $receiveId
      * @return array
      */
-    public function encrypt($text, $corpid)
+    public function encrypt($text, $receiveId)
     {
         try {
             //拼接
-            $text = $this->getRandomStr() . pack('N', strlen($text)) . $text . $corpid;
+            $text = $this->getRandomStr() . pack('N', strlen($text)) . $text . $receiveId;
             //添加PKCS#7填充
             $pkc_encoder = new PKCS7Encoder;
             $text        = $pkc_encoder->encode($text);
@@ -100,10 +100,10 @@ class Prpcrypt
      * 解密
      *
      * @param $encrypted
-     * @param $corpid
+     * @param $receiveId
      * @return array
      */
-    public function decrypt($encrypted, $corpid)
+    public function decrypt($encrypted, $receiveId)
     {
         try {
             //解密
@@ -123,12 +123,12 @@ class Prpcrypt
             $len_list    = unpack('N', substr($content, 0, 4));
             $xml_len     = $len_list[1];
             $xml_content = substr($content, 4, $xml_len);
-            $from_corpid = substr($content, $xml_len + 4);
+            $from_receiveId = substr($content, $xml_len + 4);
         } catch (Exception $e) {
             print $e;
             return [ErrorCode::$IllegalBuffer, null];
         }
-        if ($from_corpid != $corpid) {
+        if ($from_receiveId != $receiveId) {
             return [ErrorCode::$ValidateCorpidError, null];
         }
         return [0, $xml_content];

@@ -20,13 +20,11 @@ class XMLParse
 			$xml = new DOMDocument();
 			$xml->loadXML($xmltext);
 			$array_e = $xml->getElementsByTagName('Encrypt');
-			$array_a = $xml->getElementsByTagName('ToUserName');
 			$encrypt = $array_e->item(0)->nodeValue;
-			$tousername = $array_a->item(0)->nodeValue;
-			return array(0, $encrypt, $tousername);
+			return array(0, $encrypt);
 		} catch (Exception $e) {
 			print $e . "\n";
-			return array(ErrorCode::$ParseXmlError, null, null);
+			return array(ErrorCode::$ParseXmlError, null);
 		}
 	}
 
@@ -49,6 +47,15 @@ class XMLParse
 	}
 
 }
+
+//
+// Test 
+/*
+$sPostData = "<xml><ToUserName><![CDATA[toUser]]></ToUserName><AgentID><![CDATA[toAgentID]]></AgentID><Encrypt><![CDATA[msg_encrypt]]></Encrypt></xml>";
+$xmlparse = new XMLParse;
+$array = $xmlparse->extract($sPostData);
+var_dump($array);
+*/
 
 
 ?>
