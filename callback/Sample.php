@@ -113,6 +113,7 @@ $sEncryptMsg = ""; //xml格式的密文
 $errCode = $wxcpt->EncryptMsg($sRespData, $sReqTimeStamp, $sReqNonce, $sEncryptMsg);
 if ($errCode == 0) {
     var_dump($sEncryptMsg);
+	print("done \n");
 	// TODO:
 	// 加密成功，企业需要将加密之后的sEncryptMsg返回
 	// HttpUtils.SetResponce($sEncryptMsg);  //回复加密之后的密文
