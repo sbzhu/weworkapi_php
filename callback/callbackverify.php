@@ -14,7 +14,7 @@ $wxcpt = new WXBizMsgCrypt($token, $encodingAesKey, $receiveid);
 $sVerifyMsgSig = $_GET['msg_signature'];
 $sVerifyTimeStamp = $_GET['timestamp'];
 $sVerifyNonce = $_GET['nonce'];
-$sVerifyEchoStr = str_replace(' ', '+', urldecode($_GET['echostr'])); // 1. urldecode 2. php bug about decode '+' as space
+$sVerifyEchoStr = str_replace(' ', '+', urldecode($_GET['echostr'])); // 注意点 ：1. urldecode 2. php bug about decode '+' as space
 
 $sEchoStr = "";
 
