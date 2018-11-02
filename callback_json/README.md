@@ -7,3 +7,5 @@
   使用方法可以参考Sample.php文件。
 - 加解密协议请参考企业微信官方文档。
 - 经测试，PHP 5.3.3 ~ 7.2.0 版本均可使用
+
+https://blog.csdn.net/yelllowcong/article/details/76038781
