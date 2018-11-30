@@ -80,6 +80,16 @@ if ($errCode == 0) {
 	// 解密成功，sMsg即为xml格式的明文
     var_dump($sMsg);
 	// TODO: 对明文的处理
+	/*
+	"<xml><ToUserName><![CDATA[wx5823bf96d3bd56c7]]></ToUserName>
+<FromUserName><![CDATA[mycreate]]></FromUserName>
+<CreateTime>1409659813</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[hello]]></Content>
+<MsgId>4561255354251345929</MsgId>
+<AgentID>218</AgentID>
+</xml>"
+*/
 } else {
 	print("ERR: " . $errCode . "\n\n");
 	//exit(-1);
