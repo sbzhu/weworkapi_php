@@ -149,9 +149,9 @@ abstract class API
                     if ("NO_TOKEN" != $tokenType && true == $refreshTokenWhenExpired) {
                         if ("ACCESS_TOKEN" == $tokenType) { 
                             $this->RefreshAccessToken();
-                        } else if ("SUITE_ACCESS_TOKEN" == tokenType) {
+                        } else if ("SUITE_ACCESS_TOKEN" == $tokenType) {
                             $this->RefreshSuiteAccessToken();
-                        } else if ("PROVIDER_ACCESS_TOKEN" == tokenType) {
+                        } else if ("PROVIDER_ACCESS_TOKEN" == $tokenType) {
                             $this->RefreshProviderAccessToken();
                         } 
                         $retryCnt += 1;
@@ -207,9 +207,9 @@ abstract class API
                 if ("NO_TOKEN" != $tokenType && true == $refreshTokenWhenExpired) {
                     if ("ACCESS_TOKEN" == $tokenType) { 
                         $this->RefreshAccessToken();
-                    } else if ("SUITE_ACCESS_TOKEN" == tokenType) {
+                    } else if ("SUITE_ACCESS_TOKEN" == $tokenType) {
                         $this->RefreshSuiteAccessToken();
-                    } else if ("PROVIDER_ACCESS_TOKEN" == tokenType) { 
+                    } else if ("PROVIDER_ACCESS_TOKEN" == $tokenType) { 
                         $this->RefreshProviderAccessToken();
                     }
                     $retryCnt += 1;
