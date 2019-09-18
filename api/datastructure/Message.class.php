@@ -6,9 +6,9 @@ include_once(__DIR__."/../../utils/Utils.class.php");
 class Message 
 { 
     public $sendToAll = false; // bool, 是否全员发送, 即文档所谓 @all
-    public $touser = null; // string array
-    public $toparty = null; // uint array
-    public $totag = null; // uint array 
+    public $touser = array(); // string array
+    public $toparty = array(); // uint array
+    public $totag = array(); // uint array 
     public $agentid = null; // uint
     public $safe = null; // uint, 表示是否是保密消息，0表示否，1表示是，默认0 
     public $messageContent = null; // xxxMessageContent
