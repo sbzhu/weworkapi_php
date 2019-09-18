@@ -277,7 +277,7 @@ class NewsArticle {
 class NewsMessageContent
 {
     public $msgtype = "news"; 
-    public $articles = null; // NewsArticle array
+    public $articles = array(); // NewsArticle array
 
 	public function __construct($articles)
 	{
@@ -356,7 +356,7 @@ class MpNewsArticle {
 class MpNewsMessageContent
 {
     public $msgtype = "mpnews"; 
-    public $articles = null; // MpNewsArticle array
+    public $articles = array(); // MpNewsArticle array
 
 	public function __construct($articles)
 	{
