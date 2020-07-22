@@ -34,7 +34,7 @@ class JsonParse
 	 */
 	public function generate($encrypt, $signature, $timestamp, $nonce)
 	{
-		$format = '{"Encrypt": "%s", "MsgSignature": "%s", "TimeStamp": "%s", "Nonce": "%s"}';
+		$format = '{"encrypt": "%s", "msgsignature": "%s", "timestamp": "%s", "nonce": "%s"}';
 		return sprintf($format, $encrypt, $signature, $timestamp, $nonce);
 	}
 
