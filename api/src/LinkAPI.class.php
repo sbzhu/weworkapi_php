@@ -23,6 +23,7 @@ class LinkAPI extends CorpAPI {
      * @link https://work.weixin.qq.com/api/doc/90000/90135/93172
      * @return array userids 示例："userids": ["CORPID/USERID"],
      * @return array department_ids 示例： "department_ids":["LINKEDID/DEPARTMENTID"]
+     * @throws QyApiError
      */
     public function LinkGetPermList(){
         self::_HttpCall(self::Link_Get_Perm_List, 'POST', '');
@@ -34,7 +35,9 @@ class LinkAPI extends CorpAPI {
      * @brief Link_USER_GET : 关联企业读取成员详细信息
      * @link https://work.weixin.qq.com/api/doc/90000/90135/93171
      * @param $userid : string
-     * @return : User
+     * @return User : User
+     * @throws ParameterError
+     * @throws QyApiError
      */
     public function Link_UserGet($userid)
     {
@@ -47,12 +50,14 @@ class LinkAPI extends CorpAPI {
     /**
      * @brief UserSimpleList : 获取关联企业部门成员
      * @link https://work.weixin.qq.com/api/doc/90000/90135/93168
-     * @param $departmentId : string
-     * @param $fetchChild : 1/0 是否递归获取子部门下面的成员
+     * @param $department_id
+     * @param bool $fetchChild : true/false 是否递归获取子部门下面的成。（官方文档中不严谨，这里如果用0、1会提示json格式不正确。查了很久原因）
      *
-     * @return : User array
+     * @return array : User array
+     * @throws ParameterError
+     * @throws QyApiError
      */
-    public function Link_UserSimpleList($department_id, $fetchChild=0)
+    public function Link_UserSimpleList($department_id, $fetchChild=false)
     {
         Utils::checkNotEmptyStr($department_id, "department_id");
         self::_HttpCall(self::Link_USER_SIMPLE_LIST, 
@@ -67,11 +72,13 @@ class LinkAPI extends CorpAPI {
      * @brief UserList : 获取关联企业部门成员详情
      * @link https://work.weixin.qq.com/api/doc/90000/90135/93169
      * @param $departmentId : string
-     * @param $fetchChild : 1/0 是否递归获取子部门下面的成员
+     * @param bool $fetchChild : true/false  是否递归获取子部门下面的成员
      *
-     * @return
+     * @return array
+     * @throws ParameterError
+     * @throws QyApiError
      */
-    public function Link_UserList($departmentId, $fetchChild=0)
+    public function Link_UserList($departmentId, $fetchChild=false)
     {
         Utils::checkNotEmptyStr($departmentId, "departmentId");
         self::_HttpCall(self::Link_USER_LIST, 'POST', array('department_id'=>$departmentId, 'fetch_child'=>$fetchChild));
@@ -84,7 +91,8 @@ class LinkAPI extends CorpAPI {
      *
      * @param $departmentId : string, 该字段用的是互联应用可见范围接口返回的department_ids参数，用的是 linkedid + ’/‘ + department_id 拼成的字符串
      *
-     * @return : Department array
+     * @return array : Department array
+     * @throws QyApiError
      */
     public function Link_DepartmentList($departmentId)
     {
@@ -93,17 +101,19 @@ class LinkAPI extends CorpAPI {
     }
 
     // --------------------------- 关联企业消息推送 -----------------------------------
+
     /**
      * @brief Link_MessageSend : 发送消息
      *
      * @link https://work.weixin.qq.com/api/doc#10167
      *
-     * @param $message : Message
+     * @param Link_Message $message : Message
      * @param $invalidUserIdList : string array
      * @param $invalidPartyIdList : uint array
      * @param $invalidTagIdList : uint array
      *
-     * @return
+     * @return void
+     * @throws QyApiError
      */
     public function Link_MessageSend(Link_Message $message, &$invalidUserIdList, &$invalidPartyIdList, &$invalidTagIdList)
     {
