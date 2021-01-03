@@ -16,12 +16,13 @@ $config = require (__DIR__."/config_link.php");
 $api = new LinkAPI($config['corpid'], $config['sec']);
 
 try {
-    $LinkGetPermList = $api->LinkGetPermList();
+
     echo "获取应用的可见范围:";
+    $LinkGetPermList = $api->LinkGetPermList();
     var_dump($LinkGetPermList);
 
-    $use_get = $api->Link_UserGet('ww5614ccf1c02e6d99/7086');
     echo '\n获取用户成员详细信息：';
+    $use_get = $api->Link_UserGet('ww5614ccf1c02e6d99/7086');
     var_dump($use_get);
 
     echo '\n获取互联企业部门成员:（需要在“可见范围加该部门可见，否则会提示
