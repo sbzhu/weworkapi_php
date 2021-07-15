@@ -11,4 +11,14 @@
  
 return array(
     'DEBUG' => true, // 是否打印debug信息
+    'corp' => [
+        'corpId' => 'ww913f78bb23341760',
+        'agentId' => '',
+        'secretKey' => '', // agent所对应的 secret
+    ],
+    'redis' => [
+        'host'=>'',
+        'auth'=>'',
+        'db'=>0,
+    ]
 );
