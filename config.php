@@ -10,7 +10,7 @@
  */
  
 return array(
-    'DEBUG' => true, // 是否打印debug信息
+    'DEBUG' => true, // 是否打印debug信息。注意，此为true时，会在返回结果中带curl 请求详情，而不仅仅是 json。正式使用时需要改成 false。
     'corp' => [
         'corpId' => 'ww913f78bb23341760',
         'agentId' => '',

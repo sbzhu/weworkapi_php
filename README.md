@@ -9,10 +9,14 @@
     * MarkDown消息发送；
     * 小程序消息发送；
     * 任务卡片消息发送（需要企业微信应用有回调功能支持）；
-1. 使用Redis缓存。在 config 文件中修改配置。
-1. 待处理（使用composer加载）
 
-后续会继续增加丰富其功能。
+## 其他新增功能：
+请进入 https://github.com/logmecn/weworkapi 查看，除以上功能外还有：
+1. 使用Redis缓存。在 config 文件中修改配置。
+1. 使用composer加载
+
+后续会继续增加丰富其功能。   
+如果有需要新增功能，请发 issue 或 PR，会第一时间回复。
 
 # 原说明
 weworkapi_php 是为了简化开发者对企业微信API接口的使用而设计的，API调用库系列之php版本    
@@ -28,7 +32,7 @@ golang : https://github.com/sbzhu/weworkapi_golang  ryanjelin@tencent.com(企业
 golang : https://github.com/doubliekill/EnterpriseWechatSDK  1006401052yh@gmail.com(个人开发者)  
 
 # Requirement
-经测试，PHP 5.3.3 ~ 7.2.0 版本均可使用
+PHP 5.4 ~ 7.4 版本均可使用，PHP8.0未测试，理论上应该也ok。
 
 # Director 
 
@@ -91,7 +95,6 @@ $api->dosomething()
 当然，如果要更严格的做的话，建议自行修改，```全局缓存token，比如存redis、存文件等```，失效周期设置为2小时。
 
 # Contact us
-abelzhu@tencent.com  
 xiqunpan@tencent.com  
 
 # 
