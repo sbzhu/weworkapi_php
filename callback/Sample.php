@@ -38,7 +38,7 @@ $sEchoStr = "";
 $wxcpt = new WXBizMsgCrypt($token, $encodingAesKey, $corpId);
 $errCode = $wxcpt->VerifyURL($sVerifyMsgSig, $sVerifyTimeStamp, $sVerifyNonce, $sVerifyEchoStr, $sEchoStr);
 if ($errCode == 0) {
-    var_dump($sEchoStr);
+    echo $sEchoStr;
 	//
 	// 验证URL成功，将sEchoStr返回
 	// HttpUtils.SetResponce($sEchoStr);
