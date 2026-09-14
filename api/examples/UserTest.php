@@ -3,7 +3,7 @@
  *   
  * @File UserTest.php
  * @Brief 
- * @Author abelzhu, abelzhu@tencent.com
+ * @Author abelzhu, <AUTHOR_EMAIL>
  * @Version 1.0
  * @Date 2017-12-26
  *
@@ -26,8 +26,8 @@ try {
     {
         $user->userid = "userid";
         $user->name = "name";
-        $user->mobile = "131488888888";
-        $user->email = "sbzhu@ipp.cas.cn";
+        $user->mobile = "<MOBILE>";
+        $user->email = "<EMAIL>";
         $user->department = array(1); 
 
         $ExtattrList = new ExtattrList();
@@ -41,7 +41,7 @@ try {
     var_dump($user);
 
     //
-    $user->mobile = "1219887219873";
+    $user->mobile = "<MOBILE>";
     $api->UserUpdate($user); 
 
     //
@@ -54,7 +54,7 @@ try {
 
     //
     $openId = null;
-    $api->UserId2OpenId("ZhuShengBen", $openId);
+    $api->UserId2OpenId("<USERID_1>", $openId);
     echo "openid: $openId\n";
 
     //

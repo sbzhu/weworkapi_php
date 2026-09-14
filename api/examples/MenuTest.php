@@ -3,7 +3,7 @@
  *   
  * @File MenuTest.php
  * @Brief 
- * @Author abelzhu, abelzhu@tencent.com
+ * @Author abelzhu, <AUTHOR_EMAIL>
  * @Version 1.0
  * @Date 2017-12-26
  *

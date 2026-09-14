@@ -3,7 +3,7 @@
  *   
  * @File BatchInviteTest.php
  * @Brief 
- * @Author abelzhu, abelzhu@tencent.com
+ * @Author abelzhu, <AUTHOR_EMAIL>
  * @Version 1.0
  * @Date 2018-01-02
  *
@@ -26,7 +26,7 @@ try {
     $invalidPartyIdList = null;
     $invalidTagIdList = null;
     $api->BatchInvite(
-        array('ZhuShengBen', 'abelzhu', 'userid_for_invite_test'), array(1, 2, 111), array(1, 222), 
+        array('<USERID_1>', '<USERID_2>', '<USERID_3>'), array(1, 2, 111), array(1, 222), 
         $invalidUserIdList, $invalidPartyIdList, $invalidTagIdList);
     var_dump($invalidUserIdList);
     var_dump($invalidPartyIdList);

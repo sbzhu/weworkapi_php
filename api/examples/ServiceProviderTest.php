@@ -3,7 +3,7 @@
  *   
  * @File ServiceProviderTest.php
  * @Brief 
- * @Author abelzhu, abelzhu@tencent.com
+ * @Author abelzhu, <AUTHOR_EMAIL>
  * @Version 1.0
  * @Date 2017-12-26
  *
@@ -15,8 +15,8 @@ include_once("../src/ServiceProviderAPI.class.php");
  
 try {
     $ServiceProviderAPI = new ServiceProviderAPI(
-        "CORPID", 
-        "PROVIDER_SECRET"
+        "<CORP_ID>", 
+        "<PROVIDER_SECRET>"
     );
     //
 
@@ -30,7 +30,7 @@ try {
     var_dump($register_code);
 
     //
-    $GetLoginInfoRsp = $ServiceProviderAPI->GetLoginInfo("xxxxxxxxxxxxxx");
+    $GetLoginInfoRsp = $ServiceProviderAPI->GetLoginInfo("<LOGIN_AUTH_CODE>");
 } catch (Exception $e) { 
     echo $e->getMessage() . "\n";
 }
@@ -38,11 +38,11 @@ try {
 try {
     $ServiceProviderAPI = new ServiceProviderAPI();
 
-    $access_token = "xxxxxxxxxxxxxx";
+    $access_token = "<ACCESS_TOKEN>";
     //
     $SetAgentScopeReq = new SetAgentScopeReq();
     {
-        $SetAgentScopeReq->agentid = 11111111;
+        $SetAgentScopeReq->agentid = "<AGENT_ID>";
     }
     $SetAgentScopeRsp = $ServiceProviderAPI->SetAgentScope($access_token, $SetAgentScopeReq);
     var_dump($SetAgentScopeRsp);

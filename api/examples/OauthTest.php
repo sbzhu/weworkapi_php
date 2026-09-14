@@ -3,7 +3,7 @@
  *   
  * @File OauthTest.php
  * @Brief 
- * @Author abelzhu, abelzhu@tencent.com
+ * @Author abelzhu, <AUTHOR_EMAIL>
  * @Version 1.0
  * @Date 2017-12-26
  *
@@ -19,7 +19,7 @@ $agentId = $config['APP_ID'];
 $api = new CorpAPI($config['CORP_ID'], $config['APP_SECRET']);
 
 try {
-    $UserInfoByCode = $api->GetUserInfoByCode("IPzWnFmIQVf2wJFlJrln9-P-wqu7jeQsKyUKol1TWeU"); 
+    $UserInfoByCode = $api->GetUserInfoByCode("<OAUTH_CODE>"); 
     var_dump($UserInfoByCode);
 
     $userDetailByUserTicket = $api->GetUserDetailByUserTicket($UserInfoByCode->user_ticket); 

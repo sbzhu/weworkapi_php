@@ -3,9 +3,9 @@
 include_once "WXBizMsgCrypt.php";
 
 // 假设企业号在公众平台上设置的参数如下
-$encodingAesKey = "xxxxxxxxxxxxxxx";
-$token = "xxxxxxxxxxxxxx";
-$sReceiveId = "wx5823bf96d3bd56c7";
+$encodingAesKey = "<ENCODING_AES_KEY>";
+$token = "<TOKEN>";
+$sReceiveId = "<CORP_ID>";
 
 /*
 ------------使用示例一：验证回调URL---------------
@@ -53,7 +53,7 @@ print("===============================\n");
 POST /cgi-bin/wxpush?msg_signature=1f3153b7abd0ba99b4ab2e57fac2376110d03a3c&timestamp=1409659813&nonce=1372623149 HTTP/1.1
 
 {
-	"ToUserName": "wx5823bf96d3bd56c7",
+	"ToUserName": "<CORP_ID>",
 	"Encrypt": "jYKl5gAKBiSvZ694aryRMNxKJhUJFtNCSDS9TgfV7rDtEe0x6FjiuCWenK3dCDOah+qOJ8yS6RERDoFhe4dYsHpyImaoZwiGjTp1RGXr7GEW5Tn21BdmYId4Pzvoi6ieOKWbrzag5v2TzcF9syQtry2Ujg5hLEgmMP1Y3GPKHLJ8Rg1kpASRriNKeoHWnokLHlpVt3Ai45y2Bfqn+GxT7qz+yODK3f9Ygxhkpkvp6EaIDIzvk77r26t6Q/sTGfzBYPsNYI8t811B9UFyr38gwslPQUHYuOUXalAUnqpiZW0=";
 	"AgentID": 218
 }
@@ -70,7 +70,7 @@ $sReqTimeStamp = "1409659813";
 $sReqNonce = "1372623149";
 
 // post请求的密文数据
-$sReqData = '{ "ToUserName": "wx5823bf96d3bd56c7", "Encrypt": "pvXgeha3nZ7UQ2DG3WD3IVsNJR38QVl1+h+wmLQHIAwEG3Jey2aTZtvAWzhEZ9JEKGwIUMBWX3JlUhfo7O7WbvI10vHIsdSNr1nr3LuOwAfnwLJAMQNDxi5tHUl08Op59jxOL73r8+g60KOxMTaFwXzlr9Yxgq5ey5nzNb/2vDjjvDZNXkJVmL/XWnv6PXrVbTpNxphqWRv2BpPYqvwRMkHgdFliatljMVlkkRHS40FOHmtBhj/4RXtIexfDx8opBXwi0L9RTlYNQzGx+FA+74xVHG7Le/pmNDwc2Ri5mbw=", "AgentID": 218 }';
+$sReqData = '{ "ToUserName": "<CORP_ID>", "Encrypt": "pvXgeha3nZ7UQ2DG3WD3IVsNJR38QVl1+h+wmLQHIAwEG3Jey2aTZtvAWzhEZ9JEKGwIUMBWX3JlUhfo7O7WbvI10vHIsdSNr1nr3LuOwAfnwLJAMQNDxi5tHUl08Op59jxOL73r8+g60KOxMTaFwXzlr9Yxgq5ey5nzNb/2vDjjvDZNXkJVmL/XWnv6PXrVbTpNxphqWRv2BpPYqvwRMkHgdFliatljMVlkkRHS40FOHmtBhj/4RXtIexfDx8opBXwi0L9RTlYNQzGx+FA+74xVHG7Le/pmNDwc2Ri5mbw=", "AgentID": 218 }';
 $sMsg = "";  // 解析之后的明文
 $errCode = $wxcpt->DecryptMsg($sReqMsgSig, $sReqTimeStamp, $sReqNonce, $sReqData, $sMsg);
 if ($errCode == 0) {
@@ -92,7 +92,7 @@ print("===============================\n");
 
 { 
 	"ToUserName": "mycreate",
-	"FromUserName":"wx5823bf96d3bd56c7",
+	"FromUserName":"<CORP_ID>",
 	"CreateTime": 1348831860,
 	"MsgType": "text",
 	"Content": "this is a test",
@@ -109,7 +109,7 @@ print("===============================\n");
 */
 
 // 需要发送的明文
-$sRespData = '{ "ToUserName": "mycreate", "FromUserName":"wx5823bf96d3bd56c7", "CreateTime": 1348831860, "MsgType": "text", "Content": "this is a test", "MsgId": 1234567890123456, "AgentID": 128, }';
+$sRespData = '{ "ToUserName": "mycreate", "FromUserName":"<CORP_ID>", "CreateTime": 1348831860, "MsgType": "text", "Content": "this is a test", "MsgId": 1234567890123456, "AgentID": 128, }';
 $sEncryptMsg = ""; //xml格式的密文
 $errCode = $wxcpt->EncryptMsg($sRespData, $sReqTimeStamp, $sReqNonce, $sEncryptMsg);
 if ($errCode == 0) {

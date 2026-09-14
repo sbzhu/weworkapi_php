@@ -4,7 +4,7 @@
  *   
  * @File ServiceProviderAPI.class.php
  * @Brief : 为服务商开放的接口, 使用服务商的token
- * @Author abelzhu, abelzhu@tencent.com
+ * @Author abelzhu, <AUTHOR_EMAIL>
  * @Version 1.0
  * @Date 2017-12-26
  *

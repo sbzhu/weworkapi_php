@@ -3,7 +3,7 @@
  *   
  * @File CheckinTest.php
  * @Brief 
- * @Author abelzhu, abelzhu@tencent.com
+ * @Author abelzhu, <AUTHOR_EMAIL>
  * @Version 1.0
  * @Date 2017-12-26
  *
@@ -18,11 +18,11 @@ $api = new CorpAPI($config['CORP_ID'], $config['CHECKIN_APP_SECRET']);
  
 try { 
     //
-    $checkinOption = $api->CheckinOptionGet(1513760113, array("ZhuShengBen"));
+    $checkinOption = $api->CheckinOptionGet(1513760113, array("<USERID_1>"));
     var_dump($checkinOption);
 
     //
-    $checkinDataList = $api->CheckinDataGet(1, 1513649733, 1513770113, array("ZhuShengBen"));
+    $checkinDataList = $api->CheckinDataGet(1, 1513649733, 1513770113, array("<USERID_1>"));
     var_dump($checkinDataList);
 } catch (Exception $e) { 
     echo $e->getMessage() . "\n";

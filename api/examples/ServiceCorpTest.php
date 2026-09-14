@@ -3,7 +3,7 @@
  *   
  * @File ServiceCorpTest.php
  * @Brief 
- * @Author abelzhu, abelzhu@tencent.com
+ * @Author abelzhu, <AUTHOR_EMAIL>
  * @Version 1.0
  * @Date 2017-12-26
  *
@@ -13,15 +13,15 @@ include_once("../src/ServiceCorpAPI.class.php");
 include_once("../src/ServiceProviderAPI.class.php");
  
 try { 
-    $authCorpId = "AUTH_CORPID";
-    $authAgentId = 1000040;
+    $authCorpId = "<AUTH_CORPID>";
+    $authAgentId = "<AUTH_AGENT_ID>";
 
     // 下面是第三方应用接口的使用
     //
     $ServiceCorpAPI = new ServiceCorpAPI(
-        "SUITE_ID", 
-        "SUITE_SECRET",
-        "SUITE_TICKET" 
+        "<SUITE_ID>", 
+        "<SUITE_SECRET>",
+        "<SUITE_TICKET>" 
     );
 
     $pre_auth_code = $ServiceCorpAPI->GetPreAuthCode();
@@ -47,7 +47,7 @@ try {
 
     // permanentCode 的获取方法
     //
-    $temp_auth_code = "TEMP_AUTH_CODE";
+    $temp_auth_code = "<TEMP_AUTH_CODE>";
     $GetPermanentCodeRsp = $ServiceCorpAPI->GetPermanentCode($temp_auth_code);
     var_dump($GetPermanentCodeRsp);
 
@@ -57,7 +57,7 @@ try {
     var_dump($GetAuthInfoRsp);
 
     // 
-    $code = "xxxxxxxxxx";
+    $code = "<AUTH_CODE>";
     $GetUserinfoBy3rdRsp = $ServiceCorpAPI->GetUserinfoBy3rd($code);
     var_dump($GetUserinfoBy3rdRsp);
 
@@ -73,21 +73,21 @@ try {
 }
 
 try { // 第三方服务商使用永久授权码调用企业接口 
-    $authCorpId = "AUTH_CORPID";
-    $permanentCode = "PERMANENT_CODE"; 
-    $authAgentId = 1000040;
+    $authCorpId = "<AUTH_CORPID>";
+    $permanentCode = "<PERMANENT_CODE>"; 
+    $authAgentId = "<AUTH_AGENT_ID>";
 
     $ServiceCorpAPI = new ServiceCorpAPI(
-        "SUITE_ID", 
-        "SUITE_SECRET",
-        "SUITE_TICKET", // suite_ticket
+        "<SUITE_ID>", 
+        "<SUITE_SECRET>",
+        "<SUITE_TICKET>", // suite_ticket
         $authCorpId,
         $permanentCode
     );
     $message = new Message();
     {
         $message->sendToAll = false;
-        $message->touser = array("abelzhu", "ShengbenZhu");
+        $message->touser = array("<USERID_1>", "<USERID_2>");
         $message->toparty = array(1, 2, 1111, 3333);
         $message->totag= array(3, 4, 22233332, 33334444);
         $message->agentid = $authAgentId;

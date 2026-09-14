@@ -3,7 +3,7 @@
  *   
  * @File MessageTest.php
  * @Brief 
- * @Author abelzhu, abelzhu@tencent.com
+ * @Author abelzhu, <AUTHOR_EMAIL>
  * @Version 1.0
  * @Date 2017-12-26
  *
@@ -24,7 +24,7 @@ try {
     $message = new Message();
     {
         $message->sendToAll = false;
-        $message->touser = array("abelzhu", "ShengbenZhu");
+        $message->touser = array("<USERID_1>", "<USERID_2>");
         $message->toparty = array(1, 2, 1111, 3333);
         $message->totag= array(3, 4, 22233332, 33334444);
         $message->agentid = $agentId;
@@ -36,7 +36,7 @@ try {
                     $title = "Got you !", 
                     $description = "Who's this cute guy testing me ?", 
                     $url = "https://work.weixin.qq.com/wework_admin/ww_mt/agenda", 
-                    $picurl = "https://p.qpic.cn/pic_wework/167386225/f9ffc8f0a34f301580daaf05f225723ff571679f07e69f91/0", 
+                    $picurl = "<PIC_URL>", 
                     $btntxt = "btntxt"
                 ),
             )

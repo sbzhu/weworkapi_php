@@ -3,7 +3,7 @@
  *   
  * @File TagTest.php
  * @Brief 
- * @Author abelzhu, abelzhu@tencent.com
+ * @Author abelzhu, <AUTHOR_EMAIL>
  * @Version 1.0
  * @Date 2017-12-26
  *
@@ -38,7 +38,7 @@ try {
     $invalidPartyIdList = null;
     $api->TagAddUser(
         $tagid, 
-        array("ZhuShengBen", "abelzhu", "aaaa", "bbbb"), 
+        array("<USERID_1>", "<USERID_2>", "<USERID_3>", "<USERID_4>"), 
         array(1, 2, 2222, 3333), 
         $invalidUserIdList, 
         $invalidPartyIdList);

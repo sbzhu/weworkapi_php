@@ -4,7 +4,7 @@
  *   
  * @File CorpAPI.class.php
  * @Brief : 为企业开放的接口
- * @Author abelzhu, abelzhu@tencent.com
+ * @Author abelzhu, <AUTHOR_EMAIL>
  * @Version 1.0
  * @Date 2017-12-26
  *

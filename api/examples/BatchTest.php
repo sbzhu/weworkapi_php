@@ -3,7 +3,7 @@
  *   
  * @File BatchTest.php
  * @Brief 
- * @Author abelzhu, abelzhu@tencent.com
+ * @Author abelzhu, <AUTHOR_EMAIL>
  * @Version 1.0
  * @Date 2017-12-26
  *
@@ -23,9 +23,9 @@ try {
     //
     $batchJobArgs = new BatchJobArgs();
     {
-        $batchJobArgs->media_id = "1yyrBujtAp1U04xwuoevYqSEK0osexgr900H9iP4xBrdj0QVWgl2Jc-0u-F3S7SJVXKSslr10C0YgAlfdKKganA";
-        $batchJobArgs->callback->url = "www.qq.com";
-        $batchJobArgs->callback->token = "token";
+        $batchJobArgs->media_id = "<MEDIA_ID>";
+        $batchJobArgs->callback->url = "<CALLBACK_URL>";
+        $batchJobArgs->callback->token = "<CALLBACK_TOKEN>";
     }
     $jobId = $api->BatchSyncUser($batchJobArgs);
     echo $jobId . "\n";
